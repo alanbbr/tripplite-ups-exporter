@@ -17,8 +17,8 @@ The OpenWrt `git clone` directory as used below is `$HOME/Source/External/openwr
 will generate a static executable suitable for running on a VoCore2 running OpenWRT 22.03. The below generates a static executable suitable for running on a Linksys WRT3200ACM, also running running OpenWRT.
 
     export STAGING_DIR=$HOME/Source/External/openwrt/staging_dir/toolchain-arm_cortex-a9+vfpv3-d16_gcc-11.2.0_musl_eabi
-    CGO_ENABLED=1 CC=$STAGING_DIR/bin/arm-openwrt-linux-muslgnueabi-gcc GOOS=linux GOARCH=arm go get -a -ldflags '-w' github.com/karalabe/hid
-    CGO_ENABLED=1 CC=$STAGING_DIR/bin/arm-openwrt-linux-muslgnueabi-gcc GOOS=linux GOARCH=arm go build -a -ldflags '-w -extldflags -static' -o tripplite-ups-exporter-arm7 main.go
+    CGO_ENABLED=1 CC=$STAGING_DIR/bin/arm-openwrt-linux-muslgnueabi-gcc GOOS=linux GOARCH=arm GOARM=7 go get -a -ldflags '-w' github.com/karalabe/hid
+    CGO_ENABLED=1 CC=$STAGING_DIR/bin/arm-openwrt-linux-muslgnueabi-gcc GOOS=linux GOARCH=arm GOARM=7 go build -a -ldflags '-w -extldflags -static' -o tripplite-ups-exporter-arm7 main.go
 
 See https://go.dev/doc/install/source#environment for the list of valid combinations and additional CPU specific options (like GOMIPS as above).
 
